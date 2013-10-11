@@ -3,30 +3,32 @@ require 'spec_helper'
 
 describe Project do
 
-  before(:each) do
+  before do
     @project = Project.new
   end
 
-  it "should not be finalized" do
-    @project.should_not be_finalized
+  it "should be finalized" do
+    task = Task.new
+    task.finalized = true
+    @project.tasks << task
+    expect(@project).to be_finalized
   end
 
   it "should have name" do
     @project = Project.create(:name => 'Project 01')
-    @project.name.should eql("Project 01")
+    expect(@project.name).to eql("Project 01")
   end
 
-  it "should be finalized" do
-    @project = Project.create(:name => 'Project 01', :finalized => true)
-    @project.should be_finalized
+  it "should not be finalized" do
+    @project = Project.create(:name => 'Project 01')
+    expect(@project).to_not be_finalized
   end
 
   #project without name
   it "should not be valid" do
-    @project.finalized = true
-    @project.should_not be_valid
-    @project.errors[:name].count.should == 1
-    @project.errors[:name].first.should eql(I18n.t("errors.messages.empty"))
+    expect(@project).to_not be_valid
+    expect(@project.errors[:name].count).to eql(1)
+    expect(@project.errors[:name].first).to eql(I18n.t("errors.messages.empty"))
   end
 
   it 'has many tasks' do

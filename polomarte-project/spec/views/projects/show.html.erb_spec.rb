@@ -3,8 +3,7 @@ require 'spec_helper'
 describe "projects/show" do
   before(:each) do
     @project = assign(:project, stub_model(Project,
-                                           :name => "Name",
-                                           :finalized => false
+                                           :name => "Name"
     ))
   end
 

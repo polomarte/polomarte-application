@@ -15,7 +15,7 @@ describe Task do
   end
 
   it "should be finalized" do
-    @task = Project.create(:name => 'Run', :finalized => true)
+    @task = Task.create(:description => 'Run', :finalized => true)
     @task.should be_finalized
   end
 
