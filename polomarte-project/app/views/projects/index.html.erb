@@ -1,13 +1,10 @@
-<h1>Listing projects</h1>
+<h1><%= t(:project, scope: [:activerecord, :models]).pluralize.capitalize %></h1>
 
-<table>
+<table class="table table-bordered table-hover">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Finalized</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th><%= t(:name, scope: [:activerecord, :attributes, :project]) %></th>
+    <th><%= t(:status, scope: [:activerecord, :attributes, :project]) %></th>
   </tr>
   </thead>
 
@@ -15,10 +12,7 @@
   <% @projects.each do |project| %>
       <tr>
         <td><%= project.name %></td>
-        <td><%= project.finalized? %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <td><%= project.status %></td>
       </tr>
   <% end %>
   </tbody>
@@ -26,4 +20,5 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
+
+<%= link_to t(:create, scope: [:helpers, :submit],  model: t(:project, scope: [:activerecord, :models])), new_project_path, :class => 'btn btn-primary btn-lg' %>

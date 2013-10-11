@@ -13,7 +13,7 @@ Feature: Projects registration
   Scenario: Creating a new valid project
     Given I visit the new project page
     When I fill the new project form with "Foobar" as name
-    And click on the "Create" button
+    And click on the "Salvar projeto" button
     Then the number of existent projects should be increased by one
     Then page should have notice message "Project was successfully created."
 

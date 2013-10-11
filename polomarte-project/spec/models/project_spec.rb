@@ -15,18 +15,18 @@ describe Project do
     expect(@project).to be_finalized
   end
 
-  it "should have name" do
-    @project = Project.create(:name => 'Project 01')
-
-    expect(@project.name).to eql("Project 01")
-  end
-
   it "should not be finalized" do
     @project = Project.create(:name => 'Project 01')
 
     expect(@project).to_not be_finalized
   end
 
+
+  it "should have name" do
+    @project = Project.create(:name => 'Project 01')
+
+    expect(@project.name).to eql("Project 01")
+  end
   #project without name
   it "should not be valid" do
     expect(@project).to_not be_valid
@@ -36,6 +36,21 @@ describe Project do
 
   it 'has many tasks' do
     @project.should respond_to :tasks
+  end
+
+  it 'should have open status' do
+    @project = Project.create(:name => 'Project 01')
+
+    expect(@project.status).to eql(I18n.t("activerecord.attributes.project.open"))
+  end
+  it 'should have finalized status' do
+    task = Task.new
+    task.finalized = true
+    @project.tasks << task
+    @project.name = "Project 01"
+    @project.save
+
+    expect(@project.status).to eql(I18n.t("activerecord.attributes.project.finalized"))
   end
 
 end
