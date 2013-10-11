@@ -10,7 +10,7 @@
 
   <tbody>
   <% @projects.each do |project| %>
-      <tr>
+      <tr class="project" url="<%= project_path project %>">
         <td><%= project.name %></td>
         <td><%= project.status %></td>
       </tr>
@@ -21,4 +21,4 @@
 <br>
 
 
-<%= link_to t(:create, scope: [:helpers, :submit],  model: t(:project, scope: [:activerecord, :models])), new_project_path, :class => 'btn btn-primary btn-lg' %>
+<%= link_to t("helpers.submit.create",  model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>

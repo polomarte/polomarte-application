@@ -14,6 +14,6 @@
       <%= f.text_field :name, :class => 'form-control' %>
     </div>
 
-    <%= f.submit :class => 'btn btn-primary', :value => t(:submit, scope: [:helpers, :submit],  model: t(:project, scope: [:activerecord, :models])) %>
+    <%= f.submit :class => 'btn btn-primary', :value =>  t("helpers.submit.submit",  model: t("activerecord.models.project")) %>
 
 <% end %>

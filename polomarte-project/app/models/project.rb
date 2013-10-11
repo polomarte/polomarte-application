@@ -3,6 +3,8 @@ class Project < ActiveRecord::Base
 
   has_many :tasks
 
+  accepts_nested_attributes_for :tasks
+
   def finalized?
     !self.tasks.empty? && !self.tasks.any? { |task| task.finalized == false }
   end
