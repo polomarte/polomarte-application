@@ -6,27 +6,42 @@ describe Task do
   end
 
   it "should not be finalized" do
-    @task.should_not be_finalized
+    expect(@task).to_not be_finalized
   end
 
   it "should have description" do
     @task = Task.create(:description => 'Run')
+
     @task.description.should eql("Run")
   end
 
   it "should be finalized" do
     @task = Task.create(:description => 'Run', :finalized => true)
-    @task.should be_finalized
+
+    expect(@task).to be_finalized
   end
 
   #task without description
-  it "should not be valid" do
-    @task.should_not be_valid
-    expect(@task.errors.count).to eq(2)
-    @task.errors[:description].count.should == 1
-    @task.errors[:description].first.should eql(I18n.t("errors.messages.empty"))
-    @task.errors[:project_id].count.should == 1
-    @task.errors[:project_id].first.should eql(I18n.t("errors.messages.empty"))
+  it "should not be valid without a description" do
+    project = Project.new
+    project.name = "Project 01"
+    project.id = 1
+    @task.project = project
+
+    expect(@task).to_not be_valid
+    expect(@task.errors.count).to eq(1)
+    expect(@task.errors[:description].count).to eql(1)
+    expect(@task.errors[:description].first).to eql(I18n.t("errors.messages.empty"))
+  end
+
+  #task without project
+  it "should not be valid without a project" do
+    @task.description= "Run"
+
+    expect(@task).to_not be_valid
+    expect(@task.errors.count).to eq(1)
+    expect(@task.errors[:project_id].count).to eql(1)
+    expect(@task.errors[:project_id].first).to eql(I18n.t("errors.messages.empty"))
   end
 
   it 'belongs to a project' do

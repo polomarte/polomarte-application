@@ -11,16 +11,19 @@ describe Project do
     task = Task.new
     task.finalized = true
     @project.tasks << task
+
     expect(@project).to be_finalized
   end
 
   it "should have name" do
     @project = Project.create(:name => 'Project 01')
+
     expect(@project.name).to eql("Project 01")
   end
 
   it "should not be finalized" do
     @project = Project.create(:name => 'Project 01')
+
     expect(@project).to_not be_finalized
   end
 
