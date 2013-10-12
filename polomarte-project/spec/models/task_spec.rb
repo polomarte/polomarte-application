@@ -24,6 +24,7 @@ describe Task do
   #task without description
   it "should not be valid without a description" do
     project = Project.new
+
     project.name = "Project 01"
     project.id = 1
     @task.project = project

@@ -1,14 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<h1><%= @project.name %></h1>
 
-<p>
-  <strong>Finalized:</strong>
-  <%= @project.finalized? %>
-</p>
+<table class="table table-bordered table-hover">
+
+  <thead>
+  <tr>
+    <th><%= t(:name, scope: [:activerecord, :attributes, :project]) %></th>
+    <th><%= t(:status, scope: [:activerecord, :attributes, :project]) %></th>
+    <th><%= t(:tasks, scope: [:activerecord, :attributes, :project]) %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td><%= link_to @project.name, @project %></td>
+    <td><%= @project.status %></td>
+    <% @project.tasks.each do |task| %>
+        <td><%= task.description %></td>
+        <td><%= task.finalized %></td>
+    <% end %>
+  </tr>
+  </tbody>
+
+</table>
+
+<br>
+
+
+<%= link_to t("helpers.submit.create", model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>
+
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', root_path %>

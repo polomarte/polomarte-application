@@ -42,8 +42,11 @@ end
 describe Project, "projects with tasks" do
 
   before do
+    #setup
     @project = Project.new
     task = Task.new
+
+    #exercise
     task.description= "Run"
     task.finalized = true
     @project.tasks << task

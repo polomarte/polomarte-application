@@ -13,7 +13,7 @@
   <tbody>
   <% @projects.each do |project| %>
       <tr>
-        <td><%= project.name %></td>
+        <td><%= link_to project.name, project %></td>
         <td><%= project.status %></td>
         <% project.tasks.each do |task| %>
             <td><%= task.description %></td>

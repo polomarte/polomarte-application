@@ -1,9 +1,5 @@
-Given(/^I visit the new project page$/) do
-  visit new_project_path
-end
-
-When(/^I fill the new project form with "(.*?)" as name$/) do |project_name|
-  fill_in "project_name", :with => project_name
+When(/^I fill (.+) field with "(.*?)"/) do |field, value|
+  fill_in field, :with => value
 end
 
 When(/^click on the "(.*?)" button$/) do |button_name|
@@ -28,20 +24,38 @@ Given /^I have no projects$/ do
   Project.delete_all
 end
 
-Then /^I should have ([0-9]+) projects?$/ do |count|
-  Project.count.should == count.to_i
+Then /^I should have ([0-9]+) (.+)?$/ do |count, model|
+  case model
+    when "projects"
+      Project.count.should == count.to_i
+    when "tasks"
+      Task.count.should == count.to_i
+    else
+      raise "Model not found"
+  end
+
+
 end
 
 Then(/^I should see "(.*?)"$/) do |content|
   expect(page).to have_content content
 end
 
-Given(/^I visit the (.+) show page$/) do |project_name|
-  visit project_path Project.find_by_name(project_name)
+Given(/^I visit the (.+) (.+) page$/) do |project_name, page|
+  case page
+    when "new"
+      visit new_project_path
+    when "show"
+      visit project_path Project.where(:name => project_name).first_or_create
+    when "edit"
+      visit edit_project_path Project.where(:name => project_name).first_or_create
+    else
+      raise "Page not found"
+  end
 end
 
 Given(/^(.+) has tasks (.+)$/) do |project_name, tasks|
-  project = Project.create!(:name => project_name)
+  project = Project.find_by(:name => project_name)
   tasks.split(', ').each do |task|
     Task.create!(:description => task, :project => project)
   end
