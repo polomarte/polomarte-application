@@ -21,21 +21,7 @@ describe Task do
     expect(@task).to be_finalized
   end
 
-  #task without description
-  it "should not be valid without a description" do
-    project = Project.new
-
-    project.name = "Project 01"
-    project.id = 1
-    @task.project = project
-
-    expect(@task).to_not be_valid
-    expect(@task.errors.count).to eq(1)
-    expect(@task.errors[:description].count).to eql(1)
-    expect(@task.errors[:description].first).to eql(I18n.t("errors.messages.empty"))
-  end
-
-  #task without project
+  #task without a project
   it "should not be valid without a project" do
     @task.description= "Run"
 
@@ -50,3 +36,25 @@ describe Task do
   end
 
 end
+
+describe Task, "task with project" do
+
+  before do
+    @task = Task.new
+    project = Project.new
+
+    project.name = "Project 01"
+    project.id = 1
+    @task.project = project
+  end
+
+  #task without description
+  it "should not be valid without a description" do
+    expect(@task).to_not be_valid
+    expect(@task.errors.count).to eq(1)
+    expect(@task.errors[:description].count).to eql(1)
+    expect(@task.errors[:description].first).to eql(I18n.t("errors.messages.empty"))
+  end
+
+end
+
