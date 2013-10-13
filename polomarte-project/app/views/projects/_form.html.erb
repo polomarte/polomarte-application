@@ -12,8 +12,11 @@
       <%= f.label :name %>
       <br>
       <%= f.text_field :name, :class => 'form-control' %>
+
+      <%= render 'tasks', builder: f if !@project.new_record? %>
+
     </div>
 
-    <%= f.submit :class => 'btn btn-primary', :value =>  t("helpers.submit.submit",  model: t("activerecord.models.project")) %>
+    <%= f.submit :class => 'btn btn-primary', :value => t("helpers.submit.submit", model: t("activerecord.models.project")) %>
 
 <% end %>
