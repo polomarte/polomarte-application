@@ -1,8 +1,0 @@
-<%= builder.fields_for :tasks do |task_form| %>
-    <%= task_form.label :description %>
-    <br>
-    <%= task_form.text_field :description, :class => 'form-control' %>
-    <%= task_form.label :finalized %>
-    <br>
-    <%= task_form.check_box :finalized %>
-<% end %>

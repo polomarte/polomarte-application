@@ -2,34 +2,30 @@
 
 <h1><%= @project.name %></h1>
 
-<table class="table table-bordered table-hover">
+<div id="project">
+  <%= form_for(@project.tasks.build, :class => 'form') do |f| %>
+      <%= f.hidden_field :project_id %>
+      <%= f.text_field :description %>
+      <%= f.submit %>
+  <% end %>
 
-  <thead>
-  <tr>
-    <th><%= t(:name, scope: [:activerecord, :attributes, :project]) %></th>
-    <th><%= t(:status, scope: [:activerecord, :attributes, :project]) %></th>
-    <th><%= t(:tasks, scope: [:activerecord, :attributes, :project]) %></th>
-  </tr>
-  </thead>
+  <h2>Incomplete Tasks</h2>
 
-  <tbody>
-  <tr>
-    <td><%= link_to @project.name, @project %></td>
-    <td><%= @project.status %></td>
-    <% @project.tasks.each do |task| %>
-        <td><%= task.description %></td>
-        <td><%= task.finalized %></td>
-    <% end %>
-  </tr>
-  </tbody>
+  <div class="tasks" id="incomplete_tasks">
+    <%= render @project.incomplete_tasks %>
+  </div>
 
-</table>
+  <h2>Complete Tasks</h2>
 
-<br>
+  <div class="tasks" id="complete_tasks">
+    <%= render @project.complete_tasks %>
+  </div>
+
+  <br>
 
 
-<%= link_to t("helpers.submit.create", model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>
+  <%= link_to t("helpers.submit.create", model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
+  <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', root_path %>

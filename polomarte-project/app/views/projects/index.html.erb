@@ -1,17 +1,17 @@
 <h1><%= t(:project, scope: [:activerecord, :models]).pluralize.capitalize %></h1>
 
-<table class="table table-bordered table-hover">
+<% @projects.each do |project| %>
+    <table class="table table-bordered table-hover">
 
-  <thead>
-  <tr>
-    <th><%= t(:name, scope: [:activerecord, :attributes, :project]) %></th>
-    <th><%= t(:status, scope: [:activerecord, :attributes, :project]) %></th>
-    <th><%= t(:tasks, scope: [:activerecord, :attributes, :project]) %></th>
-  </tr>
-  </thead>
+      <thead>
+      <tr>
+        <th><%= t(:name, scope: [:activerecord, :attributes, :project]) %></th>
+        <th><%= t(:status, scope: [:activerecord, :attributes, :project]) %></th>
+        <th><%= t(:tasks, scope: [:activerecord, :attributes, :project]) %></th>
+      </tr>
+      </thead>
 
-  <tbody>
-  <% @projects.each do |project| %>
+      <tbody>
       <tr>
         <td><%= link_to project.name, project %></td>
         <td><%= project.status %></td>
@@ -20,10 +20,14 @@
             <td><%= task.finalized %></td>
         <% end %>
       </tr>
-  <% end %>
-  </tbody>
+      </tbody>
 
-</table>
+    </table>
+
+    <%= pluralize project.tasks.size, "task" %> |
+    <%= link_to "Rename", edit_project_path(project) %> |
+    <%= link_to "Destroy", project, method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
 
 <br>
 

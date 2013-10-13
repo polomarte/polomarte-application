@@ -1,9 +1,15 @@
 class Project < ActiveRecord::Base
   validates_presence_of :name, message: I18n.t("errors.messages.empty")
 
-  has_many :tasks
+  has_many :tasks, :dependent => :destroy
 
-  accepts_nested_attributes_for :tasks, allow_destroy: true, reject_if: proc { |attributes| attributes['description'].blank? }
+  def incomplete_tasks
+    tasks.where(finalized: false)
+  end
+
+  def complete_tasks
+    tasks.where(finalized: true)
+  end
 
   def finalized?
     !self.tasks.empty? && !self.tasks.any? { |task| task.finalized == false }
