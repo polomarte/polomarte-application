@@ -1,11 +1,11 @@
 Feature: Projects visualization
   In order to see the projects
   As a visitor
-  I want to be able to see the project details and tasks
+  I want to be able to see the project details and tasks count
 
   Scenario: Project List
     Given I have projects named School, Church
-    When I visit the list of projects
+    When I visit the project list page
     Then I should see "tests.messages.school"
     And I should see "tests.messages.church"
 
@@ -18,7 +18,7 @@ Feature: Projects visualization
   Scenario: Show tasks on the project list
     Given I have projects named School, Church
     And School has tasks Wake up, Go to school
-    When I visit the list of projects
+    When I visit the project list page
     Then I should see "tests.messages.wake"
     And I should see "tests.messages.go_school"
 

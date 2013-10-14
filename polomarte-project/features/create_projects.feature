@@ -19,7 +19,6 @@ Feature: Projects registration
     Then I should have 0 projects
     And I should see "errors.messages.empty"
 
-  @wip
   Scenario: Editing a existent project
     Given I have projects named School
     And I should have 1 projects

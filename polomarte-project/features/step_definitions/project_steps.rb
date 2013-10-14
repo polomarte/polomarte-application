@@ -6,10 +6,6 @@ When(/^click on the "(.*?)" button$/) do |button_name|
   click_button button_name
 end
 
-When(/^I visit the list of projects$/) do
-  visit projects_path
-end
-
 Then /^page should have (.+) message "([^\"]*)"$/ do |type, text|
   page.has_css?("p.#{type}", :text => text, :visible => true)
 end
@@ -49,6 +45,8 @@ Given(/^I visit the (.+) (.+) page$/) do |project_name, page|
       visit project_path Project.where(:name => project_name).first_or_create
     when "edit"
       visit edit_project_path Project.where(:name => project_name).first_or_create
+    when "list"
+      visit projects_path
     else
       raise "Page not found"
   end
@@ -59,5 +57,9 @@ Given(/^(.+) has tasks (.+)$/) do |project_name, tasks|
   tasks.split(', ').each do |task|
     Task.create!(:description => task, :project => project)
   end
+end
+
+Given(/^I visit task (.+) edit page$/) do |task_name|
+  visit edit_task_path Task.where(:description => task_name).first_or_create
 end
 
