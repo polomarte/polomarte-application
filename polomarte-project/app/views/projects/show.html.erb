@@ -1,10 +1,6 @@
-<% if notice %>
-    <div class="alert alert-success">
-      <%= notice %>
-    </div>
-<% end %>
 
-<%= render 'errors' %>
+<%= notices %>
+<%= errors @project %>
 
 <h1><%= @project.name %> (<%= @project.status %>) </h1><%= link_to 'Edit', edit_project_path(@project) %>
 
@@ -31,4 +27,4 @@
 
   <br>
 
-  <%= link_to 'Back', root_path, class: "btn btn-default" %>
+<%= link_to t("helpers.cancel.back"), root_path, class: "btn btn-default" %>

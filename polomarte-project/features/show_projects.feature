@@ -19,8 +19,7 @@ Feature: Projects visualization
     Given I have projects named School, Church
     And School has tasks Wake up, Go to school
     When I visit the project list page
-    Then I should see "tests.messages.wake"
-    And I should see "tests.messages.go_school"
+    Then I should see "tests.messages.two_tasks"
 
 
 

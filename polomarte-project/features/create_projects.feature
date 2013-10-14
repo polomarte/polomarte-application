@@ -22,7 +22,7 @@ Feature: Projects registration
   Scenario: Editing a existent project
     Given I have projects named School
     And I should have 1 projects
-    And I visit the School Project edit page
+    And I visit the School edit page
     When I fill project_name field with "Edited School Project"
     And click on the "Salvar projeto" button
     Then I should have 1 projects

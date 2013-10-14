@@ -13,3 +13,15 @@
     font-weight: normal;
 
 }
+
+.container {
+    margin-top: 50px;
+}
+
+.table tbody > tr > td{
+    padding: 15px;
+}
+
+.centered{
+    text-align: center;
+}

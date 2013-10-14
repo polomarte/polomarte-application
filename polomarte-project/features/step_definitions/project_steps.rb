@@ -59,7 +59,21 @@ Given(/^(.+) has tasks (.+)$/) do |project_name, tasks|
   end
 end
 
-Given(/^I visit task (.+) edit page$/) do |task_name|
-  visit edit_task_path Task.where(:description => task_name).first_or_create
+Given(/^I visit task (.+) (.+) page$/) do |task_name, page|
+  project = Project.new
+  project.name = "Change the world"
+  project.save
+  case page
+    when "new"
+      visit new_task_path
+    when "show"
+      visit task_path Task.create!(:description => task_name, :project_id => project.id)
+    when "edit"
+      visit edit_task_path Task.create!(:description => task_name, :project_id => project.id)
+    when "list"
+      visit tasks_path
+    else
+      raise "Page not found"
+  end
 end
 

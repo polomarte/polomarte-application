@@ -1,32 +1,32 @@
-<h1><%= t(:project, scope: [:activerecord, :models]).pluralize.capitalize %></h1>
 <%= link_to t("helpers.submit.create", model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>
-<br>
+<h1><%= t(:project, scope: [:activerecord, :models]).pluralize.capitalize %></h1>
 
-<% @projects.each do |project| %>
-    <table class="table table-bordered table-hover">
+<table class="table">
 
-      <thead>
-      <tr>
-        <th><%= t(:name, scope: [:activerecord, :attributes, :project]) %></th>
-        <th><%= t(:status, scope: [:activerecord, :attributes, :project]) %></th>
-        <th><%= t(:tasks, scope: [:activerecord, :attributes, :project]) %></th>
-      </tr>
-      </thead>
+  <thead>
+  <tr>
+    <th><%= t("activerecord.attributes.project.name") %></th>
+    <th></th>
+    <th></th>
+    <th class="centered"><%= t("activerecord.attributes.project.status") %></th>
+    <th class="centered"><%= t("activerecord.models.task").capitalize.pluralize %></th>
+  </tr>
+  </thead>
 
-      <tbody>
+  <tbody>
+  <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.name, project %></td>
-        <td><%= project.status %></td>
-        <% project.tasks.each do |task| %>
-            <td><%= task.description %></td>
-            <td><%= task.finalized %></td>
-        <% end %>
+        <td class="centered"><%= link_to image_tag("edit.png"), edit_project_path(project) %></td>
+        <td class="centered"><%= link_to image_tag("remove.png"), project, method: :delete, data: {confirm: "Are you sure?"} %></td>
+        <td class="centered"><%= project.status %></td>
+        <td class="centered"><%= pluralize project.tasks.size, t("activerecord.models.task") %></td>
       </tr>
-      </tbody>
+  <% end %>
+  </tbody>
 
-    </table>
+</table>
 
-    <%= pluralize project.tasks.size, "task" %> |
-    <%= link_to "Rename", edit_project_path(project) %> |
-    <%= link_to "Destroy", project, method: :delete, data: {confirm: "Are you sure?"} %>
-<% end %>
+
+
+

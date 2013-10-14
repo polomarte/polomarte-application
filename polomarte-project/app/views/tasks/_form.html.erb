@@ -1,0 +1,18 @@
+<%= errors @task %>
+
+<%= form_for(@task, :class => 'form') do |f| %>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <br>
+      <%= f.text_field :description, :class => 'form-control', :autofocus => true %>
+      <%= f.label :finalized %>
+      <br>
+      <%= f.check_box :finalized, :class => 'form-control' %>
+
+    </div>
+
+    <%= f.submit :class => 'btn btn-primary', :value => t("helpers.submit.submit", model: t("activerecord.models.task")) %>
+    <%= link_to t("helpers.cancel.back"), project_path(@task.project), :class => "btn btn-default" %>
+
+<% end %>

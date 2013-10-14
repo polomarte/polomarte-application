@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:update, :destroy]
+  before_action :set_task, only: [:update, :destroy, :show, :edit]
 
   def create
     @task = Task.create(params[:task].permit(:description, :finalized, :project_id))
@@ -20,6 +20,12 @@ class TasksController < ApplicationController
       format.html { redirect_to project_path @task.project }
       format.js
     end
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   private
