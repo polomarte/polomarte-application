@@ -8,8 +8,8 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
  .marginbottom10 {
      margin-bottom: 10px !important;
@@ -29,3 +29,10 @@
  .width100 {
      width: 100px;
  }
+
+.field_with_errors {
+    background-color: #ffffff !important;
+    color: #FF0000  !important;
+    display: inline !important;
+    padding: 2px;
+}
