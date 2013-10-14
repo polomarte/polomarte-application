@@ -1,0 +1,24 @@
+<h3>Projeto</h3>
+<%= nested_form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> não permitiu a criação do projeto:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :name %>
+  </div>
+    <label>Tarefas: </label>
+    <%= f.fields_for :tasks %>
+    <p><%= f.link_to_add "Adicionar Tarefa", :tasks, :class => 'btn btn-primary btn-large' %></p>
+  <div class="actions">
+    <%= f.submit 'Salvar', :class => 'btn btn-success btn-large'%>
+  </div>
+<% end %>
