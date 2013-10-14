@@ -135,6 +135,9 @@ pt-BR:
       create: Criar %{model}
       submit: Salvar %{model}
       update: Atualizar %{model}
+      rename: Renomear
+      edit: Editar
+      remove: Remover
     cancel:
       back: Voltar
   number:
@@ -230,8 +233,8 @@ pt-BR:
         description: "Descrição"
         incomplete: "incompleta"
         complete: "completa"
-  tests:
+        finalized: "finalizada"
+  general:
     messages:
-      school: "School"
-      project: "School"
+      confirmation: "Você tem certeza?"
 

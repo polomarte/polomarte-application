@@ -1,4 +1,4 @@
-<% if @task.complete? %>
+<% if @task.finalized? %>
 $('#edit_task_<%= @task.id %>').appendTo('#complete_tasks');
 <% else %>
 $('#edit_task_<%= @task.id %>').appendTo('#incomplete_tasks');

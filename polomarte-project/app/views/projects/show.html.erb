@@ -1,19 +1,32 @@
-
 <%= notices %>
 <%= errors @project %>
 
-<h1><%= @project.name %> (<%= @project.status %>) </h1><%= link_to 'Edit', edit_project_path(@project) %>
+<spam class="project-title"><%= @project.name %> (<%= @project.status %>)</spam>
+<%= link_to t("helpers.submit.rename"), edit_project_path(@project), :class => "btn btn-default" %>
+
+<br/><br/>
 
 <div id="project" class="form-group">
-  <%= form_for(@project.tasks.build, :class => 'form') do |f| %>
-      <%= f.hidden_field :project_id %>
-      <%= f.text_field :description, class: "form-control" %>
-      <br>
-      <%= f.submit :class => 'btn btn-primary', :value => t("helpers.submit.submit", model: t("activerecord.models.task")) %>
-  <% end %>
+
+  <div id="task-form" class="task-form">
+    <%= form_for(@project.tasks.build, :class => 'form') do |f| %>
+        <%= f.hidden_field :project_id %>
+        <%= f.text_field :description, class: "form-control", :autofocus => true %>
+        <br>
+        <%= f.submit :class => 'btn btn-primary', :value => t("helpers.submit.submit", model: t("activerecord.models.task")) %>
+    <% end %>
+  </div>
+
+
+  <%# link_to_function is deprecated %>
+  <% #http://guides.rubyonrails.org/working_with_javascript_in_rails.html#unobtrusive-javascript %>
+  <a href="#" onclick='enableTaskForm()' class="btn btn-primary" id="task-add"> <%= t("helpers.submit.create", model: t("activerecord.models.task")) %> </a>
+
+
   <hr>
 
   <h2><%= t("activerecord.models.task").pluralize.capitalize %> <%= t("activerecord.attributes.task.incomplete").pluralize %></h2>
+
   <div class="tasks" id="incomplete_tasks">
     <%= render @project.incomplete_tasks %>
   </div>

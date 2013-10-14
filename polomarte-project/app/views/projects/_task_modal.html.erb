@@ -1,0 +1,19 @@
+<% projects.each do |project| %>
+    <div class="modal fade" id='task-modal-<%= project.id %>'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title"><%= link_to project.name, project %></h4>
+          </div>
+          <div class="modal-body">
+            <% project.tasks.each do |task| %>
+                <ul>
+                  <li><p><%= link_to task.description, edit_task_path(task) %></p></li>
+                </ul>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

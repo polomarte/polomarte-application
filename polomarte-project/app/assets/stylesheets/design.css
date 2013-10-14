@@ -9,7 +9,7 @@
 
 .finalized-task {
     text-decoration: line-through;
-    color: #ccc;
+    color: #aaa;
     font-weight: normal;
 
 }
@@ -18,10 +18,18 @@
     margin-top: 50px;
 }
 
-.table tbody > tr > td{
+.table tbody > tr > td {
     padding: 15px;
 }
 
-.centered{
+.centered {
     text-align: center;
+}
+
+.project-title {
+    font-size: 30px;
+}
+
+.task-form {
+    display: none;
 }

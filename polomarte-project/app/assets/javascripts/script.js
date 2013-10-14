@@ -1,5 +1,4 @@
-$(document).ready(function () {
-    $(".project").on("click", function () {
-        window.location = $(this).attr("url");
-    });
-});
+function enableTaskForm() {
+    jQuery('#task-form').show();
+    jQuery('#task-add').hide();
+}
