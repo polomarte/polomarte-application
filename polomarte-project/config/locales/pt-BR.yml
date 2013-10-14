@@ -234,6 +234,7 @@ pt-BR:
         incomplete: "incompleta"
         complete: "completa"
         finalized: "finalizada"
+        open: "aberta"
   general:
     messages:
       confirmation: "Você tem certeza?"

@@ -9,7 +9,7 @@
           <div class="modal-body">
             <% project.tasks.each do |task| %>
                 <ul>
-                  <li><p><%= link_to task.description, edit_task_path(task) %></p></li>
+                  <li><p><%= link_to task.description, edit_task_path(task) %> (<%= task.status.capitalize %>)</p></li>
                 </ul>
             <% end %>
           </div>

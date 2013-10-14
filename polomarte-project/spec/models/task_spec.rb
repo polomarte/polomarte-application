@@ -35,6 +35,18 @@ describe Task do
     @task.should respond_to :project
   end
 
+  it 'should have open status' do
+    @task = Task.create(:description => 'Project 01')
+
+    expect(@task.status).to eql(I18n.t("activerecord.attributes.task.open"))
+  end
+
+  it 'should have finalized status' do
+    @task = Task.create(:description => 'Project 01', :finalized => true)
+
+    expect(@task.status).to eql(I18n.t("activerecord.attributes.task.finalized"))
+  end
+
 end
 
 describe Task, "task with project" do
