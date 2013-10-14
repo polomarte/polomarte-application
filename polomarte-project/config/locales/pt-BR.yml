@@ -212,6 +212,7 @@ pt-BR:
       <<: *errors
     models:
       project: "projeto"
+      task: "tarefa"
     attributes:
       project:
         name: "Nome"
@@ -219,4 +220,16 @@ pt-BR:
         finalized: "Finalizado"
         open: "Aberto"
         tasks: "Tarefas"
+        sucess:
+          create: "Projeto criado com sucesso"
+          update: "Projeto atualizado com sucesso"
+          destroy: "Projeto deletado com sucesso"
+      task:
+        description: "Descrição"
+        incomplete: "incompleta"
+        complete: "completa"
+  tests:
+    messages:
+      school: "School"
+      project: "School"
 

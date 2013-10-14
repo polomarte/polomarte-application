@@ -38,7 +38,7 @@ Then /^I should have ([0-9]+) (.+)?$/ do |count, model|
 end
 
 Then(/^I should see "(.*?)"$/) do |content|
-  expect(page).to have_content content
+  expect(page).to have_content I18n.t(content)
 end
 
 Given(/^I visit the (.+) (.+) page$/) do |project_name, page|

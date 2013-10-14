@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:update, :destroy]
 
   def create
-    @task = Task.create!(params[:task].permit(:description, :finalized, :project_id))
+    @task = Task.create(params[:task].permit(:description, :finalized, :project_id))
     redirect_to project_path @task.project
   end
 

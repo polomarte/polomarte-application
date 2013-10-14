@@ -8,7 +8,6 @@ class CreateTasks < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :tasks, [:description, :project_id], unique: true
     add_foreign_key(:tasks, :projects)
   end
 end

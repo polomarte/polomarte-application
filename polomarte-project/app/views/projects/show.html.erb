@@ -1,6 +1,12 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+    <div class="alert alert-success">
+      <%= notice %>
+    </div>
+<% end %>
 
-<h1><%= @project.name %></h1>
+<%= render 'errors' %>
+
+<h1><%= @project.name %> (<%= @project.status %>)</h1>
 
 <div id="project">
   <%= form_for(@project.tasks.build, :class => 'form') do |f| %>
@@ -9,13 +15,13 @@
       <%= f.submit %>
   <% end %>
 
-  <h2>Incomplete Tasks</h2>
+  <h2><%= t("activerecord.models.task").pluralize.capitalize %> <%= t("activerecord.attributes.task.incomplete").pluralize %></h2>
 
   <div class="tasks" id="incomplete_tasks">
     <%= render @project.incomplete_tasks %>
   </div>
 
-  <h2>Complete Tasks</h2>
+  <h2><%= t("activerecord.models.task").pluralize.capitalize %> <%= t("activerecord.attributes.task.complete").pluralize %></h2>
 
   <div class="tasks" id="complete_tasks">
     <%= render @project.complete_tasks %>
