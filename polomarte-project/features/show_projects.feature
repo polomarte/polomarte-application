@@ -11,7 +11,7 @@ Feature: Projects visualization
 
   Scenario: Show a project page
     Given I have projects named School
-    And I visit the School show page
+    When I visit the School show page
     Then I should see "tests.messages.school"
 
 

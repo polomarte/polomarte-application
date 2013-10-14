@@ -7,6 +7,9 @@
     }
 }
 
-.clicavel{
-    cursor: pointer;
+.finalized-task {
+    text-decoration: line-through;
+    color: #ccc;
+    font-weight: normal;
+
 }

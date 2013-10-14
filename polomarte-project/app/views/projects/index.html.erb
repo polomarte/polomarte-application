@@ -1,4 +1,6 @@
 <h1><%= t(:project, scope: [:activerecord, :models]).pluralize.capitalize %></h1>
+<%= link_to t("helpers.submit.create", model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>
+<br>
 
 <% @projects.each do |project| %>
     <table class="table table-bordered table-hover">
@@ -28,8 +30,3 @@
     <%= link_to "Rename", edit_project_path(project) %> |
     <%= link_to "Destroy", project, method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>
-
-<br>
-
-
-<%= link_to t("helpers.submit.create", model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>

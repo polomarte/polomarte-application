@@ -5,7 +5,7 @@ Feature: Projects registration
 
   Scenario: Creating a new valid project
     Given I visit the project new page
-    Then I should have 0 projects
+    And I should have 0 projects
     When I fill project_name field with "Foobar"
     And click on the "Salvar projeto" button
     Then I should have 1 projects
