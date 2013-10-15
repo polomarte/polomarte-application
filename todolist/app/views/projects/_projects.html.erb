@@ -1,0 +1,24 @@
+<h3>Projetos</h3>
+
+<ul class="nav nav-list width150">
+  <li>
+    <div class="btn-group marginbottom10">
+        <%= link_to 'Novo Projeto', new_project_path, :class => 'btn btn-primary btn-large white' %>
+    </div>
+  </li>
+  <li class="divider"></li>
+  <% @projects.each do |project| %>
+      <li>
+        <div class="btn-group marginbottom10">
+          <a <% if project.completed %>class="btn btn-success btn-large dropdown-toggle width100"<% else %>class="btn btn-large dropdown-toggle width100"<% end %> data-toggle="dropdown" href="#">
+            <span class="width100"><%= project.name %></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Exibir', edit_project_path(project) %></li>
+            <li><%= link_to 'Excluir', project, method: :delete, data: { confirm: 'Deseja realmente excluir esse projeto?' } %></li>
+          </ul>
+        </div>
+      </li>
+  <% end %>
+</ul>
