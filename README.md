@@ -16,6 +16,7 @@ Ferramentas para testes
  * [RSpec] (http://rspec.info/)
 
 1. Preparação da base para testes
+
 		rake db:create
 		rake db:migrate RAILS_ENV="test"
 
