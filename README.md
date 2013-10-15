@@ -1,61 +1,53 @@
-# Polo Marte
+Polo Marte - Polo Digital
+=============
 
-## Como fazer o teste
-Leia o Briefing abaixo, faça um fork deste projeto e inclua sua aplicação nele.
-
-Quando tudo estiver pronto, mande um alô para
-[rh@polomarte.com](rh@polomarte.com)
+Projeto para [avaliação] (https://github.com/polomarte/polomarte-application)
 
 
-## Briefing
+Funcionalidades básicas
+==========
 
-Nós, em Marte, gostamos de organizar nossas tarefas.
+ * Criação e visualização de projetos e tarefas
 
-Queremos saber o quanto você é organizado também, e para isso precisamos que
-você desenvolva um projeto para colocar suas tarefas em dia.
+Ferramentas para testes
+==========
 
-Você deve ser capaz de criar diversos projetos e cada projeto deve ter um
-nome.
+ * [Cucumber] (http://cukes.info/)
+ * [RSpec] (http://rspec.info/)
 
-Cada um dos projetos pode ter várias tarefas. Essas tarefas precisam ter uma
-descrição, afinal de contas precisamos saber o que fazer :)
+1. Preparação da base para testes
+		rake db:create
+		rake db:migrate RAILS_ENV="test"
 
-Você precisa saber o que já foi feito, então seria bom marcar quando uma tarefa
-está ou não concluída. Um checkbox ao lado dela seria o ideal.
+2. Testes com rspec
 
-Quando todas as tarefas são concluídas, o projeto deverá aparecer como concluído
-também, já que não há mais nada para fazer por ali.
+		rspec
 
-**Dentro da pasta wireframes temos algumas imagens que podem te ajudar a pensar na
-interface.**
+3. Testes com cucumber
 
-
-## Como avaliaremos você
-
-* Iremos analisar se seu código é limpo e organizado;
-
-* Esperamos que você seja preguiçoso, então tente escrever a menor quantidade de
-código repetido que puder. Pontos positivos para helpers, decorators, gems.
-
-* Queremos saber se você é um desenvolvedor web de verdade, então queremos o
-máximo de Javascript/HTML/CSS que você puder usar parar tornar a experiência do
-usuário mais agradavél. Você não irá desenvolver só APIs em Marte ;)
-
-* Testes são muito importantes. Quanto mais você testar seu projeto mais pontos
-você ganha. Se você não estiver acostumado a escrever testes, tudo bem, acho que
-é a hora de aprender, comece pelos Models.
+        cucumber
 
 
-## Para pensar
+Outras ferramentas
+-----------
 
-* Não se desespere, você terá um bom tempo para desenvolver esse projeto.
-Queremos avaliar, principalmente, o seu potencial.
 
-* Peça ajuda para seus amigos, para o Google, para o Github, mas não tente
-trapacear. Seja honesto, sempre.
+ * [Capybara] (https://github.com/jnicklas/capybara)
+ * [Foreigner] (https://github.com/matthuhiggins/foreigner)
+ * [FriendlyId] (https://github.com/norman/friendly_id)
 
-* Muita gente não sabe escrever testes tão bem, mas isso é algo que você vai
-acabar aprendendo por aqui. Se não conseguir escrever todos os testes de model,
-controller, acceptance, não se desespere. Se o seu código for bem organizado,
-se sua lógica for coerente, você não vai perder pontos. Estamos aqui para te
-ajudar a crescer também.
+
+
+Para rodar:
+-----------
+
+        bundle install
+		rake db:create
+		rake db:migrate
+		rails server
+
+
+
+ Criado por [Marcos Teixeira] (https://github.com/marcosteixeira) em [projeto Polo Marte] (https://github.com/polomarte/polomarte-application)
+
+
