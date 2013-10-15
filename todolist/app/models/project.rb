@@ -6,8 +6,10 @@ class Project < ActiveRecord::Base
 
   accepts_nested_attributes_for :tasks, :allow_destroy => true, :reject_if => :all_blank
 
-  before_save do
+  def validate_completed
     self.completed = true
-    tasks.each { |task| self.completed &&= task.completed }
+    self.tasks.each { |task| self.completed &&= task.completed }
   end
+
+  before_save :validate_completed
 end
