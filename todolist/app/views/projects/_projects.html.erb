@@ -3,13 +3,13 @@
 <ul class="nav nav-list width150">
   <li>
     <div class="btn-group marginbottom10">
-        <%= link_to 'Novo Projeto', new_project_path, :class => 'btn btn-success btn-large white' %>
+        <%= link_to 'Novo Projeto', new_project_path, :class => 'btn btn-primary btn-large white' %>
     </div>
   </li>
   <% @projects.each do |project| %>
       <li>
         <div class="btn-group marginbottom10">
-          <a class="btn btn-large dropdown-toggle width100" data-toggle="dropdown" href="#">
+          <a <% if project.completed %>class="btn btn-success btn-large dropdown-toggle width100"<% else %>class="btn btn-large dropdown-toggle width100"<% end %> data-toggle="dropdown" href="#">
             <span class="width100"><%= project.name %></span>
             <span class="caret"></span>
           </a>
