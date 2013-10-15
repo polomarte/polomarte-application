@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :description, use: :slugged
 
   validates_presence_of :description, message: I18n.t("errors.messages.empty")
   validates_presence_of :project_id, message: I18n.t("errors.messages.empty")
