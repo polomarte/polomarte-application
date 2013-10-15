@@ -52,7 +52,7 @@ Given(/^I visit the (.+) (.+) page$/) do |project_name, page|
   end
 end
 
-Given(/^(.+) has tasks (.+)$/) do |project_name, tasks|
+Given(/^(.+) has tasks named (.+)$/) do |project_name, tasks|
   project = Project.find_by(:name => project_name)
   tasks.split(', ').each do |task|
     Task.create!(:description => task, :project => project)
@@ -74,6 +74,14 @@ Given(/^I visit task (.+) (.+) page$/) do |task_name, page|
       visit tasks_path
     else
       raise "Page not found"
+  end
+end
+
+When(/^I finalize (.+) tasks$/) do |tasks|
+  tasks.split(", ").each do |task_description|
+    task = Task.where(:description => task_description).first
+    task.finalized = true
+    task.save
   end
 end
 

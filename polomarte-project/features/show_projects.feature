@@ -17,9 +17,16 @@ Feature: Projects visualization
 
   Scenario: Show tasks on the project list
     Given I have projects named School, Church
-    And School has tasks Wake up, Go to school
+    And School has tasks named Wake up, Go to school
     When I visit the project list page
     Then I should see "tests.messages.two_tasks"
+
+  Scenario: Show percentage of completion of project
+    Given I have projects named School
+    And School has tasks named Wake up, put my pants, go to school
+    When I finalize Wake up, put my pants tasks
+    And I visit the project list page
+    Then I should see "tests.messages.percentage_completion"
 
 
 

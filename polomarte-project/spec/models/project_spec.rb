@@ -39,18 +39,20 @@ describe Project do
 end
 
 
-describe Project, "projects with tasks" do
+describe Project, "with tasks" do
 
   before do
     #setup
     @project = Project.new
-    task = Task.new
 
     #exercise
+    @project.name = "Project 01"
+    @project.save!
+    task = Task.new
     task.description= "Run"
     task.finalized = true
-    @project.tasks << task
-    @project.name = "Project 01"
+    task.project = @project
+    task.save!
   end
 
   it 'should have finalized status' do
@@ -64,6 +66,15 @@ describe Project, "projects with tasks" do
   it 'should have tasks' do
     expect(@project.tasks.size).to eq(1)
     expect(@project.tasks.first.description).to eql("Run")
+  end
+
+  it 'it calculates the percentage of completion' do
+    Task.create!({project_id: @project.id, description: "Save the world"})
+    Task.create!({project_id: @project.id, description: "Tying shoes", finalized: true})
+
+    expect(@project.tasks.size).to eq(3)
+    #two of three tasks are finalized
+    expect(@project.percentage.to_s).to eq("66.66666666666666")
   end
 end
 

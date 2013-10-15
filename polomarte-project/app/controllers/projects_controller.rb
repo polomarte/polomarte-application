@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    Project.destroy(params[:id])
+    Project.friendly.destroy(params[:id])
     redirect_to projects_url, notice: t("activerecord.attributes.project.sucess.destroy")
   end
 

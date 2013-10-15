@@ -27,4 +27,8 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def percentage
+    return 0 unless !complete_tasks.empty?
+    complete_tasks.count.to_f / tasks.count.to_f * 100.0
+  end
 end

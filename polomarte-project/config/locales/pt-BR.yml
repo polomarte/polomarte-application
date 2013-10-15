@@ -225,6 +225,7 @@ pt-BR:
         finalized: "Finalizado"
         open: "Aberto"
         tasks: "Tarefas"
+        conclusion: "Conclusão"
         sucess:
           create: "Projeto criado com sucesso"
           update: "Projeto atualizado com sucesso"
