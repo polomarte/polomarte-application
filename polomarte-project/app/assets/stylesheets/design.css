@@ -1,0 +1,35 @@
+@media screen and (max-width: 768px) {
+    .btn {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-bottom: 5px;
+    }
+}
+
+.finalized-task {
+    text-decoration: line-through;
+    color: #aaa;
+    font-weight: normal;
+
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.table tbody > tr > td {
+    padding: 15px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.project-title {
+    font-size: 30px;
+}
+
+.task-form {
+    display: none;
+}

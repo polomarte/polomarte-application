@@ -1,0 +1,8 @@
+<%= notices %>
+<%= errors @task %>
+
+
+<h1><%= @task.description %> (<%= @task.finalized %>) </h1><%= link_to 'Edit', edit_task_path(@task) %>
+
+<%= link_to t("helpers.cancel.back"), root_path, class: "btn btn-default" %>
+

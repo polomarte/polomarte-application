@@ -1,0 +1,38 @@
+<%= link_to t("helpers.submit.create", model: t("activerecord.models.project")), new_project_path, :class => 'btn btn-primary btn-lg' %>
+<h1><%= t(:project, scope: [:activerecord, :models]).pluralize.capitalize %></h1>
+
+<table class="table">
+
+  <thead>
+  <tr>
+    <th><%= t("activerecord.attributes.project.name") %></th>
+    <th></th>
+    <th></th>
+    <th class="centered"><%= t("activerecord.attributes.project.status") %></th>
+    <th class="centered"><%= t("activerecord.attributes.project.conclusion") %></th>
+    <th class="centered"><%= t("activerecord.models.task").capitalize.pluralize %></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.name, project %></td>
+        <td class="centered"><%= link_to image_tag("edit.png"), edit_project_path(project) %></td>
+        <td class="centered"><%= link_to image_tag("trash.png"), project, method: :delete, data: {confirm: t("general.messages.confirmation")} %></td>
+        <td class="centered"><%= project.status %></td>
+        <td class="centered"><%= number_to_percentage(project.percentage, delimiter: '.', separator: ',', precision: 2) %></td>
+        <td class="centered">
+          <a data-toggle="modal" href='#task-modal-<%= project.id %>'> <%= pluralize project.tasks.size, t("activerecord.models.task") %> </a>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+
+</table>
+
+<%= tasks_modal @projects %>
+
+
+
+

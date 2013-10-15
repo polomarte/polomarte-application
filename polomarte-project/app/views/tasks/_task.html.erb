@@ -1,0 +1,8 @@
+<%= form_for task, remote: true do |f| %>
+    <%= hidden_field_tag(request_forgery_protection_token.to_s, form_authenticity_token) %>
+
+    <%= f.check_box :finalized, class: "edit_task", id: "task-finalized-#{task.id}" %>
+    <%= f.label :finalized, task.description, class: ("finalized-task" if task.finalized) %>
+
+    <%= link_to t("helpers.submit.edit"), edit_task_path(task) %> | <%= link_to t("helpers.submit.remove"), task, method: :delete, data: {confirm: t("general.messages.confirmation")}, remote: true %>
+<% end %>

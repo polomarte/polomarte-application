@@ -1,0 +1,15 @@
+<%= errors @project %>
+
+<%= form_for(@project, :class => 'form') do |f| %>
+
+    <div class="form-group">
+      <%= f.label :name %>
+      <br>
+      <%= f.text_field :name, :class => 'form-control', :autofocus => true %>
+
+    </div>
+
+    <%= f.submit :class => 'btn btn-primary', :value => t("helpers.submit.submit", model: t("activerecord.models.project")) %>
+    <%= link_to t("helpers.cancel.back"), projects_path, :class => "btn btn-default" %>
+
+<% end %>
