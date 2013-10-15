@@ -1,7 +1,7 @@
 <% if @project.completed %>
     <div class="alert alert-success"><h3>Projeto Concluído!</h3></div>
 <% else %>
-    <h3>Projeto</h3>
+    <div class="alert alert-info"><h3>Projeto em Andamento!</h3></div>
 <% end %>
 <%= nested_form_for(@project) do |f| %>
   <% if @project.errors.any? %>
