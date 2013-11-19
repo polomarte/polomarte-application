@@ -120,6 +120,7 @@ GEM
     uglifier (2.3.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    watchr (0.7)
 
 PLATFORMS
   ruby
@@ -136,3 +137,4 @@ DEPENDENCIES
   sdoc
   turbolinks (= 1.1.1)
   uglifier (>= 2.1.0)
+  watchr
