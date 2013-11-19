@@ -7,7 +7,10 @@ group :development,:test do
   gem 'rspec-rails'
   gem 'pg','0.15.1'
   gem 'watchr'
+  gem 'selenium-webdriver'
+  gem 'capybara'
 end
+
 
 
 # Use SCSS for stylesheets
