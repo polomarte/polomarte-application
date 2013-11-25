@@ -12,7 +12,7 @@ ProjectManager::Application.configure do
   # preloads Rails for running tests, you may have to set it to true.
   config.eager_load = false
 
-  # Configure static asset server for tests with Cache-Control for performance.
+  # Configure main asset server for tests with Cache-Control for performance.
   config.serve_static_assets  = true
   config.static_cache_control = "public, max-age=3600"
 
@@ -38,5 +38,6 @@ ProjectManager::Application.configure do
   #config.gem "rspec-rails", :lib => false
   #config.gem "webrat", :lib => false
   #config.gem "cucumber", :lib => false
+
 
 end

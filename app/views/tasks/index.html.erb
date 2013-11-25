@@ -1,11 +1,17 @@
-<h1>Listing tasks</h1>
+<% provide(:title, 'Tarefas') %>
 
-<table>
+<div class="well well-lg">
+
+  <h1>Tarefas</h1>
+
+</div>
+
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Project</th>
-      <th></th>
+      <th>Título</th>
+      <th>Projeto Relacionado</th>
+      <th>Conteúdo</th>
       <th></th>
       <th></th>
     </tr>
@@ -16,6 +22,7 @@
       <tr>
         <td><%= task.name %></td>
         <td><%= task.project_id %></td>
+        <td><%= task.content %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,4 +33,5 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'Nova Tarefa', new_task_path %>
+<%= link_to 'Ver Projetos', projects_path %>

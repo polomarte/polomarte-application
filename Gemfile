@@ -9,8 +9,10 @@ group :development,:test do
   gem 'watchr'
   gem 'selenium-webdriver'
   gem 'capybara'
+  gem 'spork-rails'
+  gem 'guard-spork'
+  gem 'childprocess'
 end
-
 
 
 # Use SCSS for stylesheets
@@ -32,6 +34,8 @@ gem 'turbolinks','1.1.1'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+gem 'foreigner'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

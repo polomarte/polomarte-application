@@ -1,6 +1,15 @@
 ProjectManager::Application.routes.draw do
+  resources :priorities
+
   resources :tasks
   resources :projects
+
+  root 'main#index'
+
+  match 'credits', to: 'main#credits', via: 'get'
+
+  match 'todo', to: 'main#todo', via: 'get'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

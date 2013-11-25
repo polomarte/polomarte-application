@@ -1,11 +1,26 @@
 require 'spec_helper'
 
 describe "Tasks" do
-  describe "GET /tasks" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get tasks_path
-      response.status.should be(200)
+  describe "Tasks index" do
+    it "should show the string 'Tarefas'" do
+
+      visit '/tasks'
+      expect(page).to have_content('Tarefas')
+
     end
+
   end
+
+end
+
+describe 'Tasks create' do
+
+    it "should not be possible to add a task to an unexisting project" do
+
+      visit '/tasks/new'
+
+      expect(page).to have_content('Nova Tarefa')
+
+    end
+
 end
