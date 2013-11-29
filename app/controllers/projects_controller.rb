@@ -51,6 +51,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def add_task_to_project
+
+  end
+
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
@@ -69,6 +73,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name,:description)
     end
 end

@@ -1,19 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-12">
+    <p id="notice"><%= notice %></p>
+  </div
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @task.name %>
-</p>
+<div class="row">
 
-<p>
-  <strong>Project:</strong>
-  <%= @task.project_id %>
-</p>
+  <div class="col-xs-10">
 
-<p>
-  <strong>Content:</strong>
-  <%= @task.content	  %>
-</p>
+    <div class="col-xs-12">
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+      <div class="well">
+
+        <h2>Tarefa: <%= @task.name %></h2>
+
+        <h5>Prioridade: <%=raw style_priority(@task.priority_id) %>  </h5>
+
+      </div>
+    </div>
+
+    <div class="col-xs-12">
+
+      <div>
+
+        <h4>Conteúdo:</h4>
+
+        <p> <%= @task.content %> </p>
+      </div>
+    </div>
+
+
+
+  </div>
+
+
+  <div class="col-xs-2">
+    <ul class="nav nav-pills nav-stacked">
+      <li>
+        <a href="<%= edit_task_path(@task) %>">Editar<%= image_tag("pencil.png", :style => 'float:right;') %></a>
+      </li>
+      <li>
+        <%= link_to (raw "Excluir"+image_tag("cross.png", :style => 'float:right;')), @task, method: :delete, data: {confirm: 'Are you sure?'} %>
+      </li>
+    </ul>
+
+  </div>
+
+</div>
