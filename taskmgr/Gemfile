@@ -13,3 +13,7 @@ group :test do
   gem 'rspec-rails',                          '~> 2.14.0'
   gem 'shoulda-matchers',                     '~> 2.4.0'
 end
+
+group :development do
+  gem 'pry-rails',                            '~> 0.3.2' 
+end
