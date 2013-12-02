@@ -3,5 +3,5 @@ class Project < ActiveRecord::Base
   validates_presence_of :status
   validates_inclusion_of :status, in: %w(inProgress finished)
 
-  has_many :tasks
+  has_many :tasks, :dependent => :destroy
 end

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Project do
-  
+
   context "validations" do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:status) }
@@ -9,6 +9,6 @@ describe Project do
   end
 
   context "associations" do
-    it { should have_many(:tasks) }
+    it { should have_many(:tasks).dependent(:destroy) }
   end
 end
