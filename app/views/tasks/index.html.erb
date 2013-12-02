@@ -1,37 +1,60 @@
 <% provide(:title, 'Tarefas') %>
 
-<div class="well well-lg">
+<div class="row">
 
-  <h1>Tarefas</h1>
+  <div class="col-xs-10">
+
+    <div class="well well-lg">
+
+      <h1>Tarefas</h1>
+
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th style="width:64%;">Nome</th>
+        <th style="width:10%;">Prioridade</th>
+        <th style="width:10%;">Projeto</th>
+        <th style="width:14%;">Criado em</th>
+        <th style="width:4%;"></th>
+        <th style="width:4%;"></th>
+        <th style="width:4%;"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @tasks.each do |task| %>
+          <tr>
+
+            <td><%= task.name %></td>
+            <td><%= raw style_priority(task.priority_id) %></td>
+            <td><%= Project.find(task.project_id).name %></td>
+            <td><%= task.created_at.to_s.gsub(/(\d+)-(\d+)-(\d+).+/, '\3/\2/\1') %></td>
+            <td style="text-align:center;">
+              <a href="<%= task_path(task) %>"><%= image_tag("magnifier.png", rel: 'tooltip', title: 'visualizar') %></a>
+            </td>
+            <td style="text-align:center;">
+              <a href="<%= edit_task_path(task) %>"><%= image_tag("pencil.png", rel: 'tooltip', title: 'editar') %></a>
+            </td>
+            <td style="text-align:center;">
+              <%= link_to (image_tag("cross.png", rel: 'tooltip', title: 'excluir')), task, method: :delete, data: {confirm: 'Deseja realmente excluir esta Tarefa?'} %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-xs-2">
+    <ul class="nav nav-pills nav-stacked">
+      <li>
+        <a href="<%= new_task_path %>">Nova Tarefa<%= image_tag("asterisk-yellow.png", :style => 'float:right;') %></a>
+      </li>
+
+    </ul>
+
+  </div>
 
 </div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Título</th>
-      <th>Projeto Relacionado</th>
-      <th>Conteúdo</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.name %></td>
-        <td><%= task.project_id %></td>
-        <td><%= task.content %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Nova Tarefa', new_task_path %>
-<%= link_to 'Ver Projetos', projects_path %>

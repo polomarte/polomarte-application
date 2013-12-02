@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order( 'priority_id DESC')
   end
 
   # GET /tasks/1
@@ -28,10 +28,6 @@ class TasksController < ApplicationController
 
     respond_to do |format|
 
-      if @task.priority_id.nil?
-        @task.priority_id = 1
-      end
-
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render action: 'show', status: :created, location: @task }
@@ -41,6 +37,16 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /tasks/1/complete
+  def complete
+
+    @task = Task.find(params[:id])
+    @task.completed = true
+    @task.save!
+
+    redirect_to @task , notice: 'Tarefa foi marcada como completa.'
   end
 
   # PATCH/PUT /tasks/1
@@ -75,6 +81,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :project_id, :content)
+      params.require(:task).permit(:name, :project_id, :content, :priority_id)
     end
 end

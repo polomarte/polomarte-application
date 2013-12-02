@@ -18,4 +18,3 @@ doc/
 .DS_Store
 .idea
 .secretapp
-config/initializers/secret_token.rb

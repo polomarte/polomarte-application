@@ -1,12 +1,17 @@
 ProjectManager::Application.routes.draw do
   resources :priorities
 
-  resources :tasks
+  resources :tasks do
+    member do
+      post 'complete'
+    end
+  end
   resources :projects do
     member do
       get 'addtask'
     end
   end
+
 
   root 'main#index'
 

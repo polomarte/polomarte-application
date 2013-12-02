@@ -51,7 +51,10 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def add_task_to_project
+  def addtask
+
+    @project = Project.find(params[:id])
+    @task = Task.new(:project_id=>@project.id)
 
   end
 

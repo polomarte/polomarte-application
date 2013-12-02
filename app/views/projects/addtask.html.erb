@@ -1,0 +1,5 @@
+<h1>Adicionar Tarefa ao Projeto: <%= @project.name %> </h1>
+
+<%= render 'tasks/form', readonly: true, :cancel_path => project_path(@project) %>
+
+
