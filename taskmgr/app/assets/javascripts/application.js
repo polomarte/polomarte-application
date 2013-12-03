@@ -19,12 +19,3 @@ $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("active");
 });
-
-$(document).ready(function () {
-    document.getElementById('more').onclick = function () {
-        if (this.checked)
-            document.getElementById('form').style.display = 'block';
-        else
-            document.getElementById('form').style.display = 'none';  
-    }
-});

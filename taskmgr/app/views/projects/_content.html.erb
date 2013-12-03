@@ -1,7 +1,8 @@
 <div class="content-header">
   <h1>
-      <%= @project.name.nil? ? "Welcome!" : @project.name %>
+      <%= @project.name.nil? ? "Welcome!" : @project.name %> 
   </h1>
+      <%= @project.name.nil? ? "" : t(@project.status) %> 
 </div>
 <% if @project.name.nil? %>
   <div class="page-content inset">
@@ -22,6 +23,7 @@
 <% else %>
   <div class="col-md-4">
     <%= render 'form'%>
+    <br><br>
     <%= link_to "Destroy this project!",{action: :destroy, id: @project.id}, method: :delete, data: { confirm: "Are you sure?" } %>
   </div>
 <% end %>

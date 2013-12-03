@@ -1,7 +1,7 @@
 <%= form_for @project, :html => { class: "form-horizontal" } do |f| %>
   <fieldset>
-    <%= f.label :name, 'Name' %>:
-    <%= f.text_field :name , class: "input-xlarge" %><br/>
-    <%= f.submit %>
+    <%= f.label :name, 'Name' %>: 
+    <%= f.text_field :name , :class => "form-control" %><br>
+    <%= f.submit class: "btn btn-default" %>
   </fieldset>
 <% end %>
