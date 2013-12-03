@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131202130818) do
+ActiveRecord::Schema.define(version: 20131202233017) do
 
   create_table "projects", force: true do |t|
     t.string "name"
-    t.string "status"
+    t.string "status", default: "inProgress"
   end
 
   create_table "tasks", force: true do |t|
     t.string  "name"
     t.text    "description"
     t.integer "project_id"
-    t.boolean "finished"
+    t.boolean "finished",    default: false
   end
 
 end
