@@ -1,0 +1,27 @@
+<div class="content-header">
+  <h1>
+      <%= @project.name.nil? ? "Welcome!" : @project.name %>
+  </h1>
+</div>
+<% if @project.name.nil? %>
+  <div class="page-content inset">
+    <div class="row">
+      <div class="col-md-12">
+        <p class="lead">This is my simple project management system. I hope you like it!</p>
+      </div>
+      <div class="col-md-4">
+        Add a new project!
+        <br/>
+        <%= render 'form' %>
+      </div>
+      <br/>
+      <div id ="form" style="display: none;"> 
+      </div> 
+    </div>
+  </div>
+<% else %>
+  <div class="col-md-4">
+    <%= render 'form'%>
+    <%= link_to "Destroy this project!",{action: :destroy, id: @project.id}, method: :delete, data: { confirm: "Are you sure?" } %>
+  </div>
+<% end %>
