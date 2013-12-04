@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = params[:id]
+    @project = Project.find(params[:id])
     index
   end
 
