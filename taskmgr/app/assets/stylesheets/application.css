@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+.btn-custom-lighten.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-custom-lighten {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #cd0c23;
+  background-image: -moz-linear-gradient(top, #ba0b20, #ea0e28);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ba0b20), to(#ea0e28));
+  background-image: -webkit-linear-gradient(top, #ba0b20, #ea0e28);

@@ -11,7 +11,10 @@
         <p class="lead">This is my simple project management system. I hope you like it!</p>
       </div>
       <div class="col-md-4">
-        Add a new project!
+        <%= render 'application/errors', object: @errors %>
+        <strong>
+          Add a new project!
+        </strong>
         <br/>
         <%= render 'form' %>
       </div>
@@ -22,8 +25,14 @@
   </div>
 <% else %>
   <div class="col-md-4">
+    <%= render 'application/errors', object: @errors %>
+    <% @project.errors.each do |e| %>
+      <%= e %>
+    <%end%>
     <%= render 'form'%>
     <br><br>
-    <%= link_to "Destroy this project!",{action: :destroy, id: @project.id}, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% if @project.id %>
+      <%= link_to "Destroy this project!",{action: :destroy, id: @project.id}, method: :delete, data: { confirm: "Are you sure?" } %>
+    <%end%>
   </div>
 <% end %>

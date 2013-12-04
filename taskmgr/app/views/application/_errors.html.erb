@@ -1,0 +1,16 @@
+<% if !object.nil? and object.errors.any? %>
+  <div class="alert error_message">
+    <button class="close" data-dismiss="alert" type="button">x</button> 
+    <strong>
+      <%= t(:error_message) %>
+    </strong>
+    <br/>
+    <ul>
+      <% object.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+<%end%>

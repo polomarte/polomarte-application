@@ -1,7 +1,10 @@
 <%= form_for @project, :html => { class: "form-horizontal" } do |f| %>
   <fieldset>
-    <%= f.label :name, 'Name' %>: 
+    <%= f.label :name, 'Project name:' %> 
     <%= f.text_field :name , :class => "form-control" %><br>
-    <%= f.submit class: "btn btn-default" %>
+    <%= f.fields_for :tasks do |builder| %>
+      <%= render 'tasks', f: builder %>
+    <%end%>
+    <%= f.submit class: "btn btn-custom-lighten" %>
   </fieldset>
 <% end %>

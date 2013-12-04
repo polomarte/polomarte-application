@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    @project ? edit : new
+    @project.nil?  ? new : edit
   end
 
   def new
@@ -14,7 +14,10 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_path, notice: "Project created!"
     else
-      render 'new'
+      @errors = @project
+      @project = nil
+      index
+      render 'index'
     end
   end
 
@@ -31,9 +34,10 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update_attributes(project_params)
-      redirect_to projects_path, notice: "Project updated"
-    else
-      render 'edit'
+      redirect_to project_path(@project.id), notice: "Project updated"
+    else 
+      @errors = @project
+      index
     end
   end
 
@@ -45,7 +49,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name,:id)
+    params.require(:project).permit(:name, tasks_attributes: [:id, :name, :description, :finished, :_destroy])
   end
 end
 

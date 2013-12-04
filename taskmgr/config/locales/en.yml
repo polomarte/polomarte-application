@@ -23,3 +23,4 @@ en:
   hello: "Hello world"
   inProgress: In Progress
   finished: Finished!
+  error_message: Oops...you must fix it before saving

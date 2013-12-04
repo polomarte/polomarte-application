@@ -11,4 +11,8 @@ describe Project do
   context "associations" do
     it { should have_many(:tasks).dependent(:destroy) }
   end
+
+  context "nested attibutes" do
+    it { should accept_nested_attributes_for(:tasks) }
+  end
 end
