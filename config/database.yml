@@ -25,9 +25,14 @@ test:
   encoding: unicode
   user: postgres
   password: postgres
-#
-#production:
-#  adapter: sqlite3
-#  database: db/production.sqlite3
-#  pool: 5
-#  timeout: 5000
+
+
+production:
+  adapter: postgresql
+  host: localhost
+  database: projects-test
+  pool: 5
+  timeout: 5000
+  encoding: unicode
+  user: postgres
+  password: postgres
