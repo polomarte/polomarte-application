@@ -29,8 +29,8 @@ test:
 
 production:
   adapter: postgresql
-  host: localhost
-  database: projects-prod
+  host: ec2-54-225-255-208.compute-1.amazonaws.com
+  database: dl03s0avm4hi2
   pool: 5
   timeout: 5000
   encoding: unicode
