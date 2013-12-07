@@ -30,9 +30,9 @@ test:
 production:
   adapter: postgresql
   host: localhost
-  database: projects-test
+  database: projects-prod
   pool: 5
   timeout: 5000
   encoding: unicode
-  user: postgres
-  password: postgres
+  user: loewjstkmqfenv
+  password: t9all_HnELIx0aLmHS5zioft2D
