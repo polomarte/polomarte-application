@@ -18,6 +18,7 @@ ProjectManager::Application.routes.draw do
   match 'credits', to: 'main#credits', via: 'get'
 
   match 'todo', to: 'main#todo', via: 'get'
+  match 'source', to: 'main#source', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
