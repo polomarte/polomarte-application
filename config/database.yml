@@ -1,43 +1,22 @@
 
-#development:
-#  adapter: postgresql
-#  host: localhost
-#  database: projects-dev
-#  pool: 5
-#  timeout: 5000
-#  encoding: unicode
-#  user: postgres
-#  password: postgres
-#
-
-#test:
-#  adapter: postgresql
-#  host: localhost
-#  database: projects-test
-#  pool: 5
-#  timeout: 5000
-#  encoding: unicode
-#  user: postgres
-#  password: postgres
-
 development:
   adapter: postgresql
-  database: pm-dev
+  host: localhost
+  database: projects-dev
   pool: 5
   timeout: 5000
   encoding: unicode
+  user: postgres
+  password: postgres
 
 
 test:
   adapter: postgresql
-  database: pm-test
+  host: localhost
+  database: projects-test
   pool: 5
   timeout: 5000
   encoding: unicode
+  user: postgres
+  password: postgres
 
-
-production:
-  adapter: postgresql
-  pool: 5
-  timeout: 5000
-  encoding: unicode
