@@ -25,14 +25,20 @@
         <div class="field">
           <%= f.label :priority_id, 'Prioridade' %>
           <br>
-          <%= f.collection_select( :priority_id, Priority.all, :id, :name, {:prompt=>'Selecione'} , {:class => 'form-control' } ) %>
+          <%= f.collection_select(:priority_id, Priority.all, :id, :name, {:prompt => 'Selecione'}, {:class => 'form-control'}) %>
         </div>
       </div>
       <div class="col-xs-2">
         <div class="field">
           <%= f.label :project_id, 'Projeto' %>
           <br>
-          <%= f.collection_select( :project_id, Project.all, :id, :name, {:prompt=>'Selecione',:selected => @task.project_id} , {:class => 'form-control', :readonly => defined? readonly } ) %>
+
+          <% if defined? readonly %>
+              <%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt => 'Selecione', :selected => @task.project_id}, {:class => 'form-control', :disabled => true}) %>
+              <%= f.hidden_field(:project_id, {:value => @task.project_id })  %>
+          <% else %>
+              <%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt => 'Selecione', :selected => @task.project_id}, {:class => 'form-control'}) %>
+          <% end %>
         </div>
       </div>
 
@@ -54,7 +60,7 @@
         <br>
         <%= f.submit 'Criar Tarefa', :class => "btn btn-primary" %>
 
-        <%= link_to 'Cancelar',cancel_path, :class=>' btn btn-link'%>
+        <%= link_to 'Cancelar', cancel_path, :class => ' btn btn-link' %>
       </div>
 
     </div>
