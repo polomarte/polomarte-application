@@ -1,0 +1,53 @@
+<% provide(:title, 'Projetos') %>
+<div class="row">
+
+  <div class="col-xs-10">
+
+    <div class="well well-lg">
+
+      <h1>Projetos</h1>
+
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th style="width:88%;">Nome</th>
+        <th style="width:4%;"></th>
+        <th style="width:4%;"></th>
+        <th style="width:4%;"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @projects.each do |project| %>
+          <tr>
+            <td><%= project.name %></td>
+            <td style="text-align:center;">
+              <a href="<%= project_path(project) %>"><%= image_tag("magnifier.png",rel: 'tooltip', title:'visualizar') %></a>
+            </td>
+            <td style="text-align:center;">
+              <a href="<%= edit_project_path(project) %>"><%= image_tag("pencil.png",rel: 'tooltip', title:'editar') %></a>
+            </td>
+            <td style="text-align:center;">
+              <%= link_to (image_tag("cross.png",rel: 'tooltip', title:'excluir')), project, method: :delete, data: {confirm: 'Deseja realmente excluir este Projeto?'} %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="col-xs-2">
+    <ul class="nav nav-pills nav-stacked">
+      <li>
+        <a href="<%= new_project_path %>">Novo Projeto<%= image_tag("asterisk-yellow.png", :style => 'float:right;') %></a>
+      </li>
+
+    </ul>
+
+  </div>
+
+
+</div>
