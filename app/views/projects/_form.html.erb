@@ -1,11 +1,15 @@
 <%= form_for @project, :html => {:class => 'well well-lg form-horizontal', :role => 'form'} do |f| %>
     <% if @project.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this task from being saved:</h2>
+          <div class="alert alert-danger">
+
+            <%= pluralize(@project.errors.count, "error") %> impediram este projeto de ser salvo:
+
+          </div>
 
           <ul>
             <% @project.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+                <li>• <%= msg %></li>
             <% end %>
           </ul>
         </div>

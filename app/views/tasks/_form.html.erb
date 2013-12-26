@@ -1,11 +1,16 @@
 <%= form_for @task, :html => {:class => 'well well-lg form-horizontal', :role => 'form'} do |f| %>
     <% if @task.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+          <div class="alert alert-danger">
+
+            <%= pluralize(@task.errors.count, "error") %> impediram esta tarefa de ser salva:
+
+          </div>
 
           <ul>
             <% @task.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+                <li>• <%= msg %></li>
             <% end %>
           </ul>
         </div>
@@ -35,7 +40,7 @@
 
           <% if defined? readonly %>
               <%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt => 'Selecione', :selected => @task.project_id}, {:class => 'form-control', :disabled => true}) %>
-              <%= f.hidden_field(:project_id, {:value => @task.project_id })  %>
+              <%= f.hidden_field(:project_id, {:value => @task.project_id}) %>
           <% else %>
               <%= f.collection_select(:project_id, Project.all, :id, :name, {:prompt => 'Selecione', :selected => @task.project_id}, {:class => 'form-control'}) %>
           <% end %>
