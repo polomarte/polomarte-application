@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :new_task]
 
   # GET /projects
   # GET /projects.json
@@ -61,6 +61,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  # Cria Nova Tarefa
+  def new_task
+    @task = Task.new(project_id: @project.id)  
+  end
+
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
@@ -69,6 +75,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:nome)
+      params.require(:project).permit(:nome, tasks_attibutes: [:description, :completed, :project_id])
     end
 end

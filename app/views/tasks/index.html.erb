@@ -3,7 +3,7 @@
 <table>
   <thead>
     <tr>
-      <th>Description</th>
+      <th>Nome</th>
       <th>Completed</th>
       <th>Project</th>
       <th></th>
@@ -16,8 +16,8 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.description %></td>
-        <td><%= task.completed %></td>
-        <td><%= task.project %></td>
+        <td><%= task.completed ? "(finalizada)" : "" %></td>
+        <td><%= Project.find(task.project_id).nome %></td>
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'Projetos', projects_path %>

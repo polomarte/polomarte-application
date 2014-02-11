@@ -1,7 +1,16 @@
 Polomarte::Application.routes.draw do
   resources :projects do
-    resources :tasks
+    member do
+      get 'new_task'
+    end
   end
+
+  resources :tasks do
+    member do
+      post 'check'
+    end
+  end
+
   root :to => "projects#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

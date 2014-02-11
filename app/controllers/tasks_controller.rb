@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :check]
 
   # GET /tasks
   # GET /tasks.json
@@ -24,9 +24,7 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @project = Project.find(params[:project_id])
-    @task = @project.tasks.create(task_params)
-    redirect_to project_path(@project)
+    @task = Task.new(task_params)
 
     respond_to do |format|
       if @task.save
@@ -37,12 +35,6 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  # Permissão para pegar parâmetros do task
-  private
-  def task_params
-    params.require(:task).permit(:description, :completed)
   end
 
   # PATCH/PUT /tasks/1
@@ -68,6 +60,20 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def check
+    @task.completed = true
+
+    respond_to do |format|
+      if @task.save
+        format.html { redirect_to @task, notice: 'A tarefa foi completada.' }
+        format.json { render action: 'show', status: :created, location: @task }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

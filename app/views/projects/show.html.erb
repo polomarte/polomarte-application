@@ -5,5 +5,36 @@
   <%= @project.nome %>
 </p>
 
+<br>
+
+<h3>Tarefas</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project.tasks.each do |task| %>
+      <tr>
+        <td><%= task.description %></td>
+        <td><%= task.completed ? "(finalizada)" : "" %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'Nova Tarefa', new_task_project_path(@project) %> |
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

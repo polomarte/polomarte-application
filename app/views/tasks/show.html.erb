@@ -6,13 +6,19 @@
 </p>
 
 <p>
-  <strong>Completed:</strong>
-  <%= @task.completed %>
+  <strong><%= @task.completed ? "Completed" : "" %></strong>
+  
 </p>
+
+<% unless @task.completed %>
+	<%= form_tag(check_task_url(@task), method: "post") do %>
+		<%= submit_tag("Tarefa Conluída") %>
+	<% end %>
+<% end %>
 
 <p>
   <strong>Project:</strong>
-  <%= @task.project %>
+  <%= Project.find(@task.project_id).nome %>
 </p>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
