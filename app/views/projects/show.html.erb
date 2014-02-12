@@ -1,13 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Nome:</strong>
+<h1>
   <%= @project.nome %>
-</p>
+</h1>
 
 <br>
 
-<h3>Tarefas</h3>
+<h2>Tarefas</h2>
 
 <table>
   <thead>
@@ -22,9 +21,16 @@
   <tbody>
     <% @project.tasks.each do |task| %>
       <tr>
-        <td><%= task.description %></td>
-        <td><%= task.completed ? "(finalizada)" : "" %></td>
-        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to task.description, task %></td>
+       
+        <td><%= task.completed ? "(finalizada)" : "" %>
+          <% unless task.completed %>
+            <%= form_tag(check_task_url(task), method: "post") do %>
+              <%= submit_tag("Tarefa Conluída") %>
+            <% end %>
+          <% end %>
+        </td>
+
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

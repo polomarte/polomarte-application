@@ -13,8 +13,12 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.nome %></td>
-        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to project.nome, project %></td>
+
+        <td>
+          <%= project.tasks.all? { |task| task.completed == true } && project.tasks.any? ? "(finalizado)" : "nao" %>
+        </td>
+
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

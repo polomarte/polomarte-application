@@ -66,7 +66,8 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'A tarefa foi completada.' }
+        @project = Project.find(@task.project_id)
+        format.html { redirect_to @project, notice: 'A tarefa foi finalizada.' }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }
