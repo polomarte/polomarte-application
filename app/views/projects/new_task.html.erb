@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<h1><%= @project.nome %> </h1>
-<h1>Nova Tarefa</h1>
+<%- model_class = Project -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => @project.nome, :model => model_class.model_name.human.titleize %></h1>
+</div>
+<h1>New Task</h1>
 
 <%= render 'tasks/form' %>

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy, :check]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :check, :uncheck]
 
   # GET /tasks
   # GET /tasks.json
@@ -67,7 +67,22 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         @project = Project.find(@task.project_id)
-        format.html { redirect_to @project, notice: 'A tarefa foi finalizada.' }
+        format.html { redirect_to @project, notice:"A tarefa #{@task.description} foi marcada como finalizada." }
+        format.json { render action: 'show', status: :created, location: @task }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @task.errors, status: :unprocessable_entity }
+      end
+    end
+  end  
+
+  def uncheck
+    @task.completed = false
+
+    respond_to do |format|
+      if @task.save
+        @project = Project.find(@task.project_id)
+        format.html { redirect_to @project, notice: "A tarefa #{@task.description} foi marcada como nao finalizada." }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }

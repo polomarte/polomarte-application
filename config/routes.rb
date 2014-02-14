@@ -11,6 +11,12 @@ Polomarte::Application.routes.draw do
     end
   end
 
+  resources :tasks do
+    member do
+      post 'uncheck'
+    end
+  end
+
   root :to => "projects#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

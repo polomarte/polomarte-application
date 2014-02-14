@@ -1,26 +1,30 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Task -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @task.description %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= 'Name' %>:</strong></dt>
+  <dd><%= @task.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:completed) %>:</strong></dt>
+  <dd>
+    <% if @task.completed %>
+      <%= form_tag(uncheck_task_url(@task), method: "post") do %>
+        <%= image_submit_tag("checkbox_checked.png", :class => "icon-img") %>
+      <% end %>
+    <% else %>
+      <%= form_tag(check_task_url(@task), method: "post") do %>
+        <%= image_submit_tag("checkbox_unchecked.png", :class => "icon-img") %>
+      <% end %>
+    <% end %>
+  </dd>
+  <dt><strong><%= 'Project' %>:</strong></dt>
+  <dd><% project = Project.find(@task.project_id) %>
+      <%= project.nome %>
+  </dd>
+</dl>
 
-<p>
-  <strong><%= @task.completed ? "Completed" : "" %></strong>
-  
-</p>
-
-<% unless @task.completed %>
-	<%= form_tag(check_task_url(@task), method: "post") do %>
-		<%= submit_tag("Tarefa Conluída") %>
-	<% end %>
-<% end %>
-
-<p>
-  <strong>Project:</strong>
-  <% project = Project.find(@task.project_id) %>
-  <%= project.nome %>
-</p>
-
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', project_path(project) %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              project_path(project), :class => 'btn'  %>
+</div>

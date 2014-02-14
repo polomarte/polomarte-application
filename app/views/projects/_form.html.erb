@@ -1,4 +1,5 @@
-<%= form_for(@project) do |f| %>
+<%= form_for @project, :html => { :class => 'form-horizontal' } do |f| %>
+  
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -11,11 +12,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :nome %>
+
+  <div class="control-group">
+    <%= f.label :nome, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :nome, :class => 'text_field' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn' %>
   </div>
 <% end %>
