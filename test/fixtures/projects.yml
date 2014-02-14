@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  nome: MyString
-
-two:
-  nome: MyString
+<% 10.times do |n| %>
+project_<%= n %>:
+  nome: <%= "project#{n}" %>
+<% end %>
