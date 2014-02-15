@@ -2,5 +2,5 @@
 
 <% 10.times do |n| %>
 project_<%= n %>:
-  nome: <%= "project#{n}" %>
+  name: <%= "project#{n}" %>
 <% end %>

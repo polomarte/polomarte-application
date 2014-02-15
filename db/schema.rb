@@ -14,13 +14,14 @@
 ActiveRecord::Schema.define(version: 20140210214155) do
 
   create_table "projects", force: true do |t|
-    t.string   "nome"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "tasks", force: true do |t|
-    t.string   "description"
+    t.string   "name"
+    t.text     "description"
     t.boolean  "completed"
     t.integer  "project_id"
     t.datetime "created_at"

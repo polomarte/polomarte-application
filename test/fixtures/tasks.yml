@@ -2,7 +2,8 @@
 
 <% 10.times do |n| %>
 task_<%= n %>:
-  description: <%= "task#{n} " %>
+  name: <%= "task#{n}" %>
+  description: <%= "task#{n} Description" %>
   completed: false
   project_id: 1
 <% end %>

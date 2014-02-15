@@ -5,8 +5,11 @@
 
 <dl class="dl-horizontal">
   <dt><strong><%= 'Name' %>:</strong></dt>
-  <dd><%= @task.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:completed) %>:</strong></dt>
+  <dd><%= @task.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @task.description %><br>
+  </dd>
+    <dt><strong><%= model_class.human_attribute_name(:completed) %>:</strong></dt>
   <dd>
     <% if @task.completed %>
       <%= form_tag(uncheck_task_url(@task), method: "post") do %>
@@ -20,7 +23,7 @@
   </dd>
   <dt><strong><%= 'Project' %>:</strong></dt>
   <dd><% project = Project.find(@task.project_id) %>
-      <%= project.nome %>
+      <%= project.name %>
   </dd>
 </dl>
 

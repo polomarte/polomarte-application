@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class TaskTest < ActiveSupport::TestCase
+   test "nao salvar task sem name" do
+      task = Task.new
+      task.name = nil
+      assert !task.save, "Salvou task sem name"
+   end 
    test "nao salvar task sem description" do
    		task = Task.new
    		task.description = nil

@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:completed) %></th>
       <th><%= model_class.human_attribute_name(:project_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
@@ -17,9 +17,9 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= link_to task.id, task_path(task) %></td>
-        <td><%= task.description %></td>
+        <td><%= task.name %></td>
         <td><%= task.completed %></td>
-        <td><%= Project.find(task.project_id).nome %> %></td>
+        <td><%= Project.find(task.project_id).name %></td>
         <td><%=l task.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
